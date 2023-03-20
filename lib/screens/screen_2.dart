@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state_managers/models/usuario_model.dart';
+import 'package:flutter_state_managers/services/usuario_service.dart';
 
 class TwoScreen extends StatelessWidget {
   
@@ -12,19 +14,26 @@ class TwoScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MaterialButton(
-              onPressed: () {},  
+              onPressed: () {
+                final newUser = Usuario(age: 20, name: 'Kamilo', professions: ['ing', 'abogado', 'medicina'], );
+                usuarioService.loadUser(newUser);
+              },  
               color: Colors.blue,
               child: const Text('Establecer usuario', style: TextStyle(color: Colors.white),),
             ),
             MaterialButton(
-              onPressed: () {},  
+              onPressed: () {
+                usuarioService.changeAge(10);
+              },  
               color: Colors.blue,
               child: const Text('Cambiar edad', style: TextStyle(color: Colors.white),),
             ),
             MaterialButton(
-              onPressed: () {},  
+              onPressed: () {
+                usuarioService.changeCounter();
+              },  
               color: Colors.blue,
-              child: const Text('Añadir profesion', style: TextStyle(color: Colors.white),),
+              child: const Text('Aumentar contador', style: TextStyle(color: Colors.white),),
             ),
           ],
         ),
